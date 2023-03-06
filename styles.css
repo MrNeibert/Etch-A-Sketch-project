@@ -1,0 +1,73 @@
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
+  background-color: rgb(252, 255, 233);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+button {
+  height: 30px;
+}
+
+
+.bubble {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.914);
+  justify-content: center;
+  align-items: center;
+  border-radius: 2em;
+  border-color: black;
+  border-style: dashed;
+  margin: 30px;
+  padding: 0px 20px;
+  height: 50px;
+  font-size: 24px;
+}
+
+
+.gameArea {
+  display: flex;
+  flex-direction: column;
+  flex: 2 1 0;
+}
+
+.game {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+}
+
+.buttonsBox {
+  display: flex;
+  flex: 1 1 0;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+
+.boardContainer {
+  display: grid;
+  height: 500px;
+  width: 500px;
+  background-color: rgb(158, 158, 158);
+  margin: 20px;
+  gap: 2px;
+  border-color: black;
+}
+
+
+.bottomArea {
+  display: flex;
+  flex:0;
+  background-color: rgba(0, 0, 0, 0.623);
+  color: aliceblue;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}

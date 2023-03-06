@@ -9,6 +9,32 @@
   <script src="./script.js" defer></script>
 </head>
 <body>
-  
+  <div id="topArea">
+    <div class="mainTittle">
+      <div class="bubble">Etch-A-Sketch</div>
+    </div>
+  </div>
+  <div class="gameArea , bubble" >
+    <div class="game">
+      <div class="boardContainer"></div>
+    </div>
+    <div class="optionsPane">
+      <div class="buttonsBox">
+        <button onclick="changeColor('white')">Erasor</button>
+        <button onclick="changeColor('Black')">Black</button>
+        <button onclick="resetBoard()">Reset</button>
+        <button onclick="changeColor('White')">Toggle pen</button>
+        <button onclick="changeColor('random')">Rainbow</button>
+      </div>
+      <div class="inputBox">
+        <input type="text" placeholder="Board Size" value="" onchange="changeSize(this.value)">
+        <button>Set Size</button>
+        <input type="color" oninput="changeColor(this.value)">
+      </div>
+    </div>
+  </div>
+  <div class="bottomArea">
+    I'm in the bottom area
+  </div>
 </body>
 </html>
