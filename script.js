@@ -1,10 +1,10 @@
 const grid = document.querySelector(".boardContainer");
-let color =""
 
 
-color = "black"
+let color = "black"
+createPenButton("Pen Mode (Dot)");
 createBoard(16);
-createPenButton("Pen Mode (Brush)");
+
 // These are default values. Start on brush mode, color black and with a 16x16 grid
 // The createPenButton creates the mode switching logic with JS. It inserts the togglePen function to the button.
 
@@ -21,13 +21,15 @@ function createBoard(size) {
   for (let i = 0; i < Math.pow(size, 2); i++) {
     let square = document.createElement('div');
     square.style.backgroundColor = "white";
-    togglePen("Pen Mode (Dot)");
+    square.addEventListener("click", colorSquare);
     grid.appendChild(square);
   }
+  togglePen("Pen Mode (Dot)");
 }
-  //This creates the squares, paint them white and add them to the board.
-  //The togglePen function secretly adds the event listener in the squares. It passes the "Dot" mode to the funcion
-  //which reverts back to the default "Brush" to all squares
+  //This creates the squares, paint them white, adds a listenerEvent and add them to the board.
+  //The togglePen function makes sure to update the text on the button, every time a new board is generated.
+  //This also updates the logic to switch the modes. By default, it will be on Brush mode.
+  
 
 function changeSize(input) {
   if (input >= 2 && input <= 36) {
