@@ -98,6 +98,11 @@ button{
   justify-content: space-around;
 }
 
+input.inputBox {
+  width: 20px;
+  height: 20px;
+}
+
 .inputColor{
   display:flex;
   flex-direction: column;
