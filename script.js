@@ -1,6 +1,8 @@
 const grid = document.querySelector(".boardContainer");
+let color =""
 
-let color = "black"
+
+color = "black"
 createBoard(16);
 createPenButton("Pen Mode (Brush)");
 // These are default values. Start on brush mode, color black and with a 16x16 grid
@@ -22,10 +24,10 @@ function createBoard(size) {
     togglePen("Pen Mode (Dot)");
     grid.appendChild(square);
   }
+}
   //This creates the squares, paint them white and add them to the board.
   //The togglePen function secretly adds the event listener in the squares. It passes the "Dot" mode to the funcion
   //which reverts back to the default "Brush" to all squares
-}
 
 function changeSize(input) {
   if (input >= 2 && input <= 36) {
@@ -34,6 +36,13 @@ function changeSize(input) {
     console.log("please type a number between 2 -- 36")
   }
 }
+// This checks if the user presented valid input to change the grid ratio.
+
+function changeColor(choice) {
+  color = choice;
+}
+//This function is activated with the buttons. It will set the color of the pen.
+// By default its black.
 
 function colorSquare() {
   if (color == 'random') {
@@ -41,17 +50,15 @@ function colorSquare() {
   } else {
     this.style.backgroundColor = color;
   }
-
 }
-
-function changeColor(choice) {
-  color = choice;
-}
+//This function is activated once the eventListener on the squares fire up.
+//It will take the color selected (declared Global) or picked on the changeColor and use it to color the square.
 
 function resetBoard() {
   let squares = grid.querySelectorAll("div");
   squares.forEach((div) => div.style.backgroundColor = 'white');
 }
+//This will simply clear the hole board. It selects all squares and paint them white.
 
 function togglePen(mode) {
   let squares = grid.querySelectorAll("div");
@@ -69,6 +76,8 @@ function togglePen(mode) {
     createPenButton("Pen Mode (Brush)")
   }
 }
+//This is the toggle function. Depending on the text, it will select an event listener for the squares.
+//After determining the current mode, it switches it, and calls createPenButton to re-create the button with the right text.
 
 function createPenButton(text) {
   let buttonsBox = document.querySelector(".buttonsBox")
@@ -76,4 +85,6 @@ function createPenButton(text) {
   btn.setAttribute("onclick", "togglePen(this.innerHTML);");
   btn.innerHTML = text;
 }
+//This simply creates the Pen Mode Button with the text recieved. It prepares the toggle, passing the inner text to it, so it can
+//decide which mode to activate.
 
