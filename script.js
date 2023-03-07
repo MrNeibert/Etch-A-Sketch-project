@@ -4,9 +4,22 @@ const grid = document.querySelector(".boardContainer");
 let color = "black"
 createPenButton("Pen Mode (Dot)");
 createBoard(16);
-
+activateButtons();
 // These are default values. Start on brush mode, color black and with a 16x16 grid
 // The createPenButton creates the mode switching logic with JS. It inserts the togglePen function to the button.
+
+
+function activateButtons () {
+  let togglableButtons = document.querySelectorAll("#pressable");
+  togglableButtons.forEach((btn) => {
+    btn.addEventListener("click",() => {
+      document.querySelector(".pressed")?.classList.remove('pressed');
+      btn.classList.add('pressed');
+    });
+  })
+}
+
+
 
 function createBoard(size) {
   grid.style.gridTemplateColumns = `repeat( ${size}, 1fr)`;

@@ -23,20 +23,20 @@
       </div>
       <div class="optionsPane">
         <div class="buttonsBox">
-          <button onclick="changeColor('white')">Erasor</button>
-          <button onclick="changeColor('Black')">Black</button>
-          <button onclick="resetBoard()">Reset</button>
-          <button onclick="changeColor('random')">Rainbow</button>
-          <button class="penMode"></button>
+          <button id="pressable" class="style" onclick="changeColor('white')">Erasor</button>
+          <button id="pressable" class="style pressed" onclick="changeColor('Black')">Black</button>
+          <button id="pressable" class="style"  onclick="changeColor('random')">Rainbow</button>
+          <button class ="style" onclick="resetBoard()">Reset</button>
+          <button class="penMode , style"></button>
         </div>
         <div class="inputBox">
           <div class="inputBoard">
             <input type="text" placeholder="Board Size" value="" onchange="changeSize(this.value)">
-            <button>Set Size</button>
+            <button class="style">Set Size</button>
           </div>
           <div class="inputColor">
             <p>Set Color:</p>
-            <input type="color" oninput="changeColor(this.value)">
+            <input type="color" id="pressable" class="test style"  oninput="changeColor(this.value)">
           </div>
         </div>
       </div>
