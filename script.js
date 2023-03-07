@@ -7,7 +7,8 @@ createBoard(16);
 activateButtons();
 // These are default values. Start on brush mode, color black and with a 16x16 grid
 // The createPenButton creates the mode switching logic with JS. It inserts the togglePen function to the button.
-
+//activateButtons function start an eventlistener on pre-programed buttons, So only one qill be active at a time, 
+//denoted by a yellow outline.
 
 function activateButtons () {
   let togglableButtons = document.querySelectorAll("#pressable");
