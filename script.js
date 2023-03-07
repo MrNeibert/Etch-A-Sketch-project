@@ -1,52 +1,79 @@
 const grid = document.querySelector(".boardContainer");
-let color = "black";
 
+let color = "black"
 createBoard(16);
+createPenButton("Pen Mode (Brush)");
+// These are default values. Start on brush mode, color black and with a 16x16 grid
+// The createPenButton creates the mode switching logic with JS. It inserts the togglePen function to the button.
 
-
-
-function createBoard(size){
+function createBoard(size) {
   grid.style.gridTemplateColumns = `repeat( ${size}, 1fr)`;
   grid.style.gridTemplateRows = `repeat( ${size}, 1fr)`;
+  //grid template. repeat n times, and each part will ocupy a fraction of area.
+  //This ensures a perfect square.
 
-//grid template. repeat n times, and each part will ocupy a fraction of area
-
-  let squares =grid.querySelectorAll("div");
+  let squares = grid.querySelectorAll("div");
   squares.forEach((div) => div.remove());
   // this simply removes any squares already present on the board
-  
-  for (let i = 0; i < Math.pow(size,2); i++) {
-    let square = document.createElement ('div');
+
+  for (let i = 0; i < Math.pow(size, 2); i++) {
+    let square = document.createElement('div');
     square.style.backgroundColor = "white";
-    square.addEventListener ("mouseover", colorSquare)
+    togglePen("Pen Mode (Dot)");
     grid.appendChild(square);
-    //This creates the squares, paint them white and add them to the board
   }
+  //This creates the squares, paint them white and add them to the board.
+  //The togglePen function secretly adds the event listener in the squares. It passes the "Dot" mode to the funcion
+  //which reverts back to the default "Brush" to all squares
 }
 
-function changeSize(input){
-  if (input >= 2 && input <= 36){
+function changeSize(input) {
+  if (input >= 2 && input <= 36) {
     createBoard(input);
-  }else{
+  } else {
     console.log("please type a number between 2 -- 36")
   }
 }
 
-function colorSquare(){
-  if (color == 'random'){
+function colorSquare() {
+  if (color == 'random') {
     this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%`
   } else {
-  this.style.backgroundColor = color;    
+    this.style.backgroundColor = color;
   }
 
 }
 
-function changeColor(choice){
-color = choice;
+function changeColor(choice) {
+  color = choice;
 }
- 
-function resetBoard(){
-  const grid = document.querySelector(".boardContainer");
-  let squares =grid.querySelectorAll("div");
+
+function resetBoard() {
+  let squares = grid.querySelectorAll("div");
   squares.forEach((div) => div.style.backgroundColor = 'white');
 }
+
+function togglePen(mode) {
+  let squares = grid.querySelectorAll("div");
+  if (mode === "Pen Mode (Brush)") {
+    squares.forEach((div) => {
+      div.removeEventListener("mouseover", colorSquare);
+      div.addEventListener("click", colorSquare);
+    })
+    createPenButton("Pen Mode (Dot)")
+  } else {
+    squares.forEach((div) => {
+      div.removeEventListener("click", colorSquare);
+      div.addEventListener("mouseover", colorSquare);
+    })
+    createPenButton("Pen Mode (Brush)")
+  }
+}
+
+function createPenButton(text) {
+  let buttonsBox = document.querySelector(".buttonsBox")
+  let btn = buttonsBox.querySelector(".penMode");
+  btn.setAttribute("onclick", "togglePen(this.innerHTML);");
+  btn.innerHTML = text;
+}
+

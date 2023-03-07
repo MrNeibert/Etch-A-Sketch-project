@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,13 +9,14 @@
   <link rel="stylesheet" href="./styles.css">
   <script src="./script.js" defer></script>
 </head>
+
 <body>
   <div id="topArea">
     <div class="mainTittle">
       <div class="bubble">Etch-A-Sketch</div>
     </div>
   </div>
-  <div class="gameArea , bubble" >
+  <div class="gameArea , bubble">
     <div class="game">
       <div class="boardContainer"></div>
     </div>
@@ -23,13 +25,17 @@
         <button onclick="changeColor('white')">Erasor</button>
         <button onclick="changeColor('Black')">Black</button>
         <button onclick="resetBoard()">Reset</button>
-        <button onclick="changeColor('White')">Toggle pen</button>
         <button onclick="changeColor('random')">Rainbow</button>
+        <button class="penMode"></button>
       </div>
       <div class="inputBox">
-        <input type="text" placeholder="Board Size" value="" onchange="changeSize(this.value)">
-        <button>Set Size</button>
-        <input type="color" oninput="changeColor(this.value)">
+        <div class="inputBoard">
+          <input type="text" placeholder="Board Size" value="" onchange="changeSize(this.value)">
+          <button>Set Size</button>
+        </div>
+        <div class="inputColor">
+          <input type="color" oninput="changeColor(this.value)">
+        </div>
       </div>
     </div>
   </div>
@@ -37,4 +43,5 @@
     I'm in the bottom area
   </div>
 </body>
+
 </html>
